@@ -1,0 +1,21 @@
+{
+    "name": "php-homework/composer",
+    "description": "second php homework in nfq",
+    "authors": [
+        {
+            "name": "Martyna Bikulciute",
+            "email": "martyna.bikulciute@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.2.0"
+    },
+    "require-dev": {
+        "php": ">=7.2.0",
+        "symfony/var-dumper": "^4.3@dev"
+    },
+    "autoload": {
+        "classmap": ["src/"]
+    }
+}
