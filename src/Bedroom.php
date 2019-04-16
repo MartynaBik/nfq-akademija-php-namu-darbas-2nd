@@ -23,20 +23,4 @@ class Bedroom extends Room
         $this->setRoomType('Gold');
         $this->setExtras('TV', 'Air-conditioner', 'Refrigerator', 'Minibar', 'Bathtub');
     }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return
-            "\n Room type: " . $this->getRoomType() .
-            "\n Bed count: " . $this->getBedCount() .
-            "\n Balcony: " . $this->hasBalcony() .
-            "\n Restroom: " . $this->hasRestroom() .
-            "\n Reservations: " .  implode(", ", $this->getReservations()) .
-            "\n Extras: " . implode(", ", $this->getExtras() ) .
-            "\n Price: " . $this->getPrice() .
-            "\n";
-    }
 }

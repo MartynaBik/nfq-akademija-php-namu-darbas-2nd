@@ -42,6 +42,5 @@ class BookingManager
         catch (\Exception $e){
             echo $e->getMessage();
         }
-
     }
 }

@@ -202,7 +202,8 @@ class Room implements ReservableInterface
      */
     public function removeReservation($reservation): void
     {
-        // TODO: implement logic
+        $position = array_search($reservation, $this->reservations);
+        unset($this->reservations[$position]);
     }
 
     /**
@@ -210,13 +211,13 @@ class Room implements ReservableInterface
      */
     public function __toString()
     {
-        return "\n Room type: " . $this->getRoomType() .
-            "\n Bed count: " . $this->getBedCount() .
-            "\n Balcony: " . $this->hasBalcony() .
-            "\n Restroom: " . $this->hasRestroom() .
-            "\n Reservations: " .  implode(", ", $this->getReservations()) .
-            "\n Extras: " . implode(", ", $this->getExtras() ) .
-            "\n Price: " . $this->getPrice() .
+        return "\nRoom type: " . $this->getRoomType() .
+            "; Price: " . $this->getPrice() .
+            "; Bed count: " . $this->getBedCount() .
+            "; Balcony: " . ($this->hasBalcony() ? "yes": "no").
+            "; Restroom: " . ($this->hasRestroom() ? "yes": "no").
+            "; Extras: " . implode(", ", $this->getExtras() ) .
+            "; Reservations: " .  implode(", ", $this->getReservations()) .
             "\n";
     }
 }
