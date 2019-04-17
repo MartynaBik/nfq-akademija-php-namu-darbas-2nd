@@ -8,7 +8,7 @@ use Reservation\Reservation;
 use Guest\Guest;
 use Booking\BookingManager;
 
-$room = new Apartment(1408, 99);
+$room = new SingleRoom(1408, 99);
 $guest = new Guest('Vardenis', 'Pavardenis');
 $startDate = new \DateTime('2019-04-20');
 $endDate = new \DateTime('2019-04-25');

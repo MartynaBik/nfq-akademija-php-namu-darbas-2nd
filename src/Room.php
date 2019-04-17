@@ -186,10 +186,11 @@ class Room implements ReservableInterface
     public function addReservation($reservation): void
     {
         foreach ($this->reservations as $existingReservation) {
-            $isStartDateNotAvailable = (($reservation->getStartDate() > $existingReservation->getStartDate()) && ($reservation->getStartDate() < $existingReservation->getEndDate()));
-            $isEndDateNotAvailable = (($reservation->getEndDate() > $existingReservation->getStartDate()) && ($reservation->getEndDate() < $existingReservation->getEndDate()));
+            $isStartDateNotAvailable = (($reservation->getStartDate() >= $existingReservation->getStartDate()) && ($reservation->getStartDate() < $existingReservation->getEndDate()));
+            $isEndDateNotAvailable = (($reservation->getEndDate() > $existingReservation->getStartDate()) && ($reservation->getEndDate() <= $existingReservation->getEndDate()));
+            $isBetweenDateNotAvailable = (($reservation->getStartDate() < $existingReservation->getStartDate()) && ($reservation->getEndDate() > $existingReservation->getEndDate()));
 
-            if (($isStartDateNotAvailable || $isEndDateNotAvailable)) {
+            if (($isStartDateNotAvailable || $isEndDateNotAvailable || $isBetweenDateNotAvailable)) {
                 throw new ReservationException("Room " . $this->roomNumber . " reservation for " . $reservation . "is canceled. Room is already reserved. \n");
             }
         }
